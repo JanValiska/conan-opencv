@@ -28,6 +28,7 @@ class OpenCVConan(ConanFile):
                "gtk": [None, 2, 3],
                "nonfree": [True, False],
                "dc1394": [True, False],
+               "gstreamer": [True, False],
                "carotene": [True, False]}
     default_options = {"shared": False,
                        "fPIC": True,
@@ -42,6 +43,7 @@ class OpenCVConan(ConanFile):
                        "gtk": 3,
                        "nonfree": False,
                        "dc1394": True,
+                       "gstreamer": False,
                        "carotene": False}
     exports_sources = ["CMakeLists.txt"]
     exports = "LICENSE"
@@ -162,6 +164,7 @@ class OpenCVConan(ConanFile):
         cmake.definitions['WITH_JASPER'] = self.options.jasper
         cmake.definitions['WITH_OPENEXR'] = self.options.openexr
         cmake.definitions["WITH_1394"] = self.options.dc1394
+        cmake.definitions["WITH_GSTREAMER"] = self.options.gstreamer
         cmake.definitions['WITH_PROTOBUF'] = False
         cmake.definitions['WITH_FFMPEG'] = False
         cmake.definitions['WITH_QUIRC'] = False
